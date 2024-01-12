@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bill Generator</title>
+        <script type="text/javascript" src="../jquery-3.7.1.min.js"></script>
+
+    </head>
+    <script>
+        var prices = {
+            "HP": {"laptop": 50000, "mobile": 7000}, 
+            "Nokia": {"laptop": 40000, "mobile": 1000}, 
+            "Samsung": {"laptop": 60000, "mobile": 100000}, 
+            "Motorola": {"laptop": 30000, "mobile": 10000}, 
+            "Apple": {"laptop": 135000, "mobile": 150000}
+        };
+
+        $(document).ready(function() {
+            $("#billBtn").click(function () {
+                var selectedBrand = $("#brands").val();
+                var addLaptop = $("#laptop").prop("checked");
+                var addMobile = $("#mobile").prop("checked");
+
+                if(addLaptop) {
+                    var laptopQuantity = $("#laptop_quantity").val();
+                    var laptopAmount = laptopQuantity * prices[selectedBrand]["laptop"];
+                }
+                else
+                    var laptopAmount = 0;
+                if(addMobile) {
+                    var mobileQuantity = $("#mobile_quantity").val();
+                    var mobileAmount = mobileQuantity * prices[selectedBrand]["mobile"];
+                }
+                else
+                    var mobileAmount = 0;
+
+                var totalAmount = laptopAmount + mobileAmount;
+                alert("Total bill: " + totalAmount);
+            })
+        })
+    </script>
+
+    <body>
+        <table>
+            <tr>
+                <td><b>Brand</b></td>
+                <td><b>Laptop</b></td>
+                <td><b>Mobile</b></td>
+            </tr>
+            <tr>
+                <td>HP</td>
+                <td>50000</td>
+                <td>7000</td>
+            </tr>
+            <tr>
+                <td>Nokia</td>
+                <td>40000</td>
+                <td>1000</td>
+            </tr>
+            <tr>
+                <td>Samsung</td>
+                <td>60000</td>
+                <td>100000</td>
+            </tr>
+            <tr>
+                <td>Motorola</td>
+                <td>30000</td>
+                <td>10000</td>
+            </tr>
+            <tr>
+                <td>Apple</td>
+                <td>135000</td>
+                <td>150000</td>
+            </tr>
+        </table>
+        <br><br>
+        <label for="brands">Choose a brand:</label><br>
+        <select name="brands" id="brands">
+            <option value="HP">HP</option>
+            <option value="Nokia">Nokia</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Motorola">Motorola</option>
+            <option value="Apple">Apple</option>
+        </select>
+        <br><br>
+
+        Laptop: <input type="checkbox" id="laptop" value="laptop">
+        <label for="laptop_quantity">Quantity:</label>
+        <input type="text" id="laptop_quantity" name="laptop_quantity">
+        <br><br>
+
+        Mobile: <input type="checkbox" id="mobile" value="mobile">
+        <label for="mobile_quantity">Quantity:</label>
+        <input type="text" id="mobile_quantity" name="mobile_quantity">
+        <br><br>
+
+        <input type="submit" id="billBtn" value="Generate Bill">
+    </body>
+</html>

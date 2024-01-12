@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="../jquery-3.7.1.min.js">
+    </script>
+    
+    <script type = "text/javascript" language = "javascript">
+      $(document).ready(function() {
+        var title = $("p").attr("title");
+        $("#divid").text(title);
+        $("#myimg").attr("src" , "image1.jpg");
+      });
+      $(document).ready(function() {
+        $("button").click(function(){
+        $("div").animate({left:'+=250px'});
+        });
+      });
+    </script>
+    
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      tr:nth-child(even) {
+        background-color: #D6EEEE;
+      }
+      tr:nth-child(odd) {
+        background-color: #F3CEB2
+      }
+    </style>
+  </head>
+  
+  <body>
+    <button> animate </button>
+    <div style="position:relative;">
+      <table style="width:500px;height:60px;">
+        <tr>
+          <th>Brand</th>
+          <th>Item</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>Coach</td>
+          <td>Slings</td>
+          <td>330</td>
+        </tr>
+        <tr>
+          <td>Gucci</td>
+          <td>Backpack</td>
+          <td>250</td>
+        </tr>
+        <tr>
+          <td>MK</td>
+          <td>Tote</td>
+          <td>228</td>	
+        </tr>
+      </table>
+      <img id = "myimg" alt = "Sample image" style="width:500px;height:600px;" />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Birthday Card</title>
+        <script type="text/javascript" src="../jquery-3.7.1.min.js">
+        </script>
+
+        <style>
+            #birthdayCard {
+                width: 20cm; /* A4 width */
+                height: 20cm; /* A4 height */
+                text-align: center;
+            }
+
+            img {
+            max-width: 30%; /* Ensure the image doesn't exceed the card width */
+            margin-top: 50px; /* Add space between text and image */
+            }
+        </style>
+        <script>
+            $(document).ready(function () {
+                $("#updateBtn").click(function () {
+                    var selectedColor = $("#colour").val();
+                    var selectedFont = $("#font").val();
+                    var fontSize = $("#font_size").val();
+                    var borderStyle = $('input[name="border"]:checked').val();
+                    var addImage = $("#image").prop("checked");
+                    var greetingText = $("#greet_text").val();
+
+                    $("#birthdayCard").css({
+                        'background-color': selectedColor,
+                        'font-family': selectedFont,
+                        'font-size': fontSize + 'px',
+                        'border-style': borderStyle
+                    });
+
+                    if (addImage) {
+                        $("#birthdayCard").html('<p>' + greetingText + '</p><img src="image1.jpg" alt="Default picture">');
+                    } 
+                    else {
+                        $("#birthdayCard").html('<p>' + greetingText + '</p>');
+                    }
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <label for="colour">Choose a background colour:</label>
+        <br>
+        <select name="colour" id="colour">
+            <option value="yellow">yellow</option>
+            <option value="blue">blue</option>
+            <option value="green">green</option>
+            <option value="red">red</option>
+        </select>
+        <br><br>
+
+        <label for="font">Choose a font:</label>
+        <br>
+        <select name="font" id="font">
+            <option value="verdana">verdana</option>
+            <option value="cursive">cursive</option>
+            <option value="brush script mt">brush script mt</option>
+            <option value="arial black">arial black</option>
+        </select>
+        <br><br>
+
+        <label for="font_size">Specify a numeric font size:</label>
+        <br>
+        <input type="text" id="font_size" name="font_size">
+        <br><br>
+
+        <p>Choose a border style:</p>
+        <input type="radio" id="none" name="border" value="none">
+        <label for="none">None</label>
+        <br>
+        <input type="radio" id="double" name="border" value="double">
+        <label for="double">Double</label>
+        <br>
+        <input type="radio" id="solid" name="border" value="solid">
+        <label for="solid">Solid</label>
+        <br><br>
+
+        <input type="checkbox" id="image" name="image">
+        <label for="image">Add the default picture</label>
+        <br><br>
+
+        <label for="greet_text">Enter the greeting text:</label>
+        <br>
+        <textarea id="greet_text" name="greet_text" rows="5"></textarea>
+        <br><br>
+
+        <input type="submit" id="updateBtn" value="Update">
+
+        <div id="birthdayCard">
+
+        </div>
+    </body>
+</html>
