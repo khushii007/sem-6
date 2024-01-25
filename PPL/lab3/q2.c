@@ -3,8 +3,8 @@
 
 int main(int argc, char *argv[])
 {
-    int rank, size, m, A[100], B[100], sum = 0, avg_sum = 0;
-    double avg, avg_avg, C[100];
+    int rank, size, m, A[100], B[100];
+    double sum=0, avg, avg_sum=0, avg_avg, C[100];
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
