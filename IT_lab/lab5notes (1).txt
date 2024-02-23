@@ -1,0 +1,81 @@
+Solved example
+
+1) 
+Created a new blank django project called "myForm" and setup the env
+Created a Django app named "formapp"
+
+# myForm/settings.py 
+INSTALLED_APPS = [ 
+ 'myForm',
+ 'formapp', 
+ 'django.contrib.admin', 
+ 'django.contrib.auth', 
+] 
+
+TEMPLATES = [ 
+ { 
+ 'BACKEND': 'django.template.backends.django.DjangoTemplates', 
+ 'DIRS': [os.path.join(BASE_DIR,'formapp/templates/formapp')], 
+ 'APP_DIRS': True, 
+}, 
+]
+
+# myForm/urls.py from
+from django.contrib import admin
+from django.urls import path
+from django.conf.urls import include
+
+urlpatterns = [
+    # Uncomment the next line to enable the admin:
+    path('admin/', admin.site.urls),
+    # Using path for consistency
+    path('', include('formapp.urls')), 
+]
+
+Create a new item in formapp called "urls.py"
+# formapp/urls.py
+from django.urls import path
+from . import views 
+
+urlpatterns = [
+    path('', views.index, name='index'),
+]
+
+# formapp/views.py
+from django.shortcuts import render
+def index(request): 
+	return render(request, 'basic.html') 
+
+# formapp/templates/basic.html 
+changed index.html to basic.html
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>App to add two Numbers</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// JavaScript function to add two numbers
+		function myfunc() {
+			// Getting the values of the input fields with ids "num1" and "num2"
+			var n1 = document.getElementById("num1").value;
+			var n2 = document.getElementById("num2").value;
+			// Parsing the input values as integers and adding them
+			var n3 = parseInt(n1) + parseInt(n2);
+			// Displaying the sum in the paragraph with id "para1"
+			document.getElementById("para1").innerHTML = "The sum of two numbers is " + n3;
+		}
+	</script>
+	<!-- Input fields for entering two numbers -->
+	Enter num1: <input type="text" id="num1"><br>
+	Enter num2: <input type="text" id="num2"><br>
+	<!-- Button to trigger the addition function when clicked -->
+	<button onclick="myfunc()">Add</button><br>
+	<!-- Paragraph to display the result -->
+	<p id="para1"></p>
+</body>
+</html>
+
+finally run it!!
+
