@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Book info</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <script>
+            $(document).ready(function () {
+                $("#homePage").show();
+                $("#metadataPage").hide();
+                $("#reviewsPage").hide();
+                $("#publisherPage").hide();
+
+
+                $(".metadata-link").click(function() {
+                    $("#homePage").hide();
+                    $("#metadataPage").show();
+                });
+
+                $(".reviews-link").click(function() {
+                    $("#homePage").hide();
+                    $("#reviewsPage").show();
+                });
+
+                $(".publisher-link").click(function() {
+                    $("#homePage").hide();
+                    $("#publisherPage").show();
+                });
+
+                $(".goBack-link").click(function() {
+                    $("#homePage").show();
+                    $("#metadataPage").hide();
+                    $("#reviewsPage").hide();
+                    $("#publisherPage").hide();
+                })
+            });
+        </script>
+    </head>
+
+    <body>
+        <div id="homePage" class="container">
+            <div class="content mt-3">
+                <p>Welcome to the home page!</p>
+                <div class="row">
+                    <div class="col">
+                        <a href="#" class="link-primary metadata-link">Metadata</a>
+                    </div>
+                    <div class="col">
+                        <a href="#" class="link-primary reviews-link">Reviews</a>
+                    </div>
+                     <div class="col">
+                        <a href="#" class="link-primary publisher-link">Publisher information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="metadataPage" class="conatiner">
+            <div class="content mt-3">
+                <h2>Metadata</h2>
+                <p>This is the Metadata page</p>
+                <a href="#" class="link-danger goBack-link">Go back</a>
+            </div>
+        </div>
+
+        <div id="reviewsPage" class="container">
+            <div class="content mt-3">
+                <h2>Reviews</h2>
+                <p>This is the Reviews page</p>
+                <a href="#" class="link-danger goBack-link">Go back</a>
+            </div>
+        </div>
+
+        <div id="publisherPage" class="container">
+            <div class="content mt-3">
+                <h2>Publisher Info</h2>
+                <p>This is the Publisher Info page</p>
+                <a href="#" class="link-danger goBack-link">Go back</a>
+            </div>
+        </div>
+    </body>
+</html>

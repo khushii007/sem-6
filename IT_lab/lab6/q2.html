@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Magazine cover</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <style>
+            #cover {
+                width: 20cm;
+                height: 20cm;
+                text-align: center;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        </style>
+
+        <script>
+            $(document).ready(function() {
+                $("#create").click(function () {
+                    var img = $("#img").prop("files")[0];
+                    var bgcolor = $("#background-color").val();
+                    var fontsize = $("#font-size").val()+"px";
+                    var fontcolor = $("#font-color").val();
+                    var msg = $("#msg").val();
+                    var imageURL = img ? URL.createObjectURL(img) : "";
+                    
+                    $("#cover").css({
+                        "background-image": `url('${imageURL}')`,
+                        "background-color": bgcolor,
+                        "font-size": fontsize,
+                        "color": fontcolor
+                    }).text(msg);
+
+                    $("#img").css({
+                        "max-width": "100%",
+                        "max-height": "70%",
+                        "margin-top": "50px"
+                    });
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="form-group">
+                <label for="img">Select image:</label>
+                <input type="file" id="img" class="form-control-file" accept="image/*">
+            </div>
+    
+            <div class="form-group">
+                <label for="background-colour">Choose background colour</label>
+                <input type="color" id="background-color" class="form-control"></input>
+            </div>
+    
+            <div class="form-group">
+                <label for="font-size">Select font size:</label>
+                <input type="range" id="font-size" class="form-control-range" min="11" max="152" value="18">
+            </div>
+    
+            <div class="form-group">
+                <label for="font-color">Select font color:</label>
+                <input type="color" id="font-color" class="form-control">
+            </div>
+    
+            <div class="form-group">
+                <label for="msg">Input message:</label>
+                <input type="text" id="msg" class="form-control">
+            </div>
+
+            <button type="button" class="btn btn-dark" id="create">Create the cover</button>
+
+            <div id="cover"></div>
+        </div>
+    </body>
+</html>
